@@ -1,0 +1,685 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 6.2.9200}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 1. Write a program to construct a queue using Linked List with comments on each line.\par
+#include <stdio.h> \par
+#include <stdlib.h> \par
+\par
+struct node\{ //structure for node\par
+\tab int info;\par
+\tab struct node *next; \par
+\};\par
+typedef struct node NodeType;  //initiallizing user define datatpe\par
+NodeType *rear=0,*front=0; //initillizing value of rear and front  \par
+void insert(int);\par
+void display(); \par
+\par
+int main()\{\par
+\tab int choice, item;\par
+\tab do\par
+\tab\{\par
+\tab printf("\\n1.Insert \\n2.Display\\n3:Exit\\n"); \par
+\tab printf("enter ur choice\\n");\par
+\tab scanf("%d",&choice);\par
+\tab switch(choice)\{\par
+\tab\tab case 1:\par
+\tab\tab\tab printf("\\nEnter the data:\\n"); \par
+\tab\tab\tab scanf("%d",&item); \par
+\tab\tab\tab insert(item);\par
+\tab\tab\tab break;\par
+\tab\tab\par
+\tab\tab case 2:\par
+\tab\tab\tab display();\par
+\tab\tab\tab break; \par
+\tab\tab //case 3:\par
+\tab\tab //\tab exit(1);\par
+\tab\tab //\tab break; \par
+\tab\tab default:\par
+\tab\tab\tab printf("invalid choice\\n");\par
+\tab\tab\tab break; \par
+\tab\tab\}\par
+\tab\}while(choice<3);\par
+\tab return 0;\par
+\}\par
+//insert data\par
+void insert(int item) \{\par
+NodeType *nnode;\par
+nnode=( NodeType *)malloc(sizeof(NodeType));\par
+if(rear==0) \{   \tab\tab\tab //condotion where there is no data inseated yet\par
+\tab nnode->info=item; //inseating the value in nnode\par
+\tab nnode->next=NULL; \tab\tab //initilizing null value at nnode->next\par
+\tab rear=front=nnode;\tab\tab //changing the position of rear and front fron null to nnode\par
+\} \par
+else \{//condition where there is already some items inseated in queue\par
+\tab nnode->info=item; //insearting the item in queue\par
+\tab nnode->next=NULL; //initilizing the nnode-> to null so more data can be inserted later \par
+\tab rear->next=nnode; //replacing the value of rear->next with address of nnode so new node points to previous node\par
+\tab rear=nnode;\tab\tab\tab //changing rear to new node\par
+\tab\} \par
+\}\par
+\par
+\par
+//display function\par
+void display() \{\par
+\tab NodeType *temp;  \tab\tab //initilizing temp variable\par
+\tab temp=front;\tab\tab\tab // replacing the vall=ue of tem with front\par
+\tab printf("\\nqueue items are:\\t"); \par
+\tab while(temp!=NULL)\{\tab\tab\tab //loop which display all items of queue until temp reaches to last item i.e null\par
+\tab\tab printf("%d\\t",temp->info);\par
+\tab\tab temp=temp->next; \par
+\tab\}\par
+\}\par
+2. Write a program to construct a Circular Linked List with comments on each line.\par
+#include <stdio.h> \par
+#include <stdlib.h> \par
+\par
+struct node\{ //structure for node\par
+\tab int info;\par
+\tab struct node *next; \par
+\};\par
+typedef struct node NodeType;  //initiallizing user define datatpe\par
+NodeType *rear=0,*front=0; //initillizing value of rear and front  \par
+void insert(int);\par
+void display(); \par
+int main()\{\par
+\tab int choice, item;\par
+\tab do\par
+\tab\{\par
+\tab printf("\\n1.Insert \\n2.Display\\n3:Exit\\n"); \par
+\tab printf("enter ur choice\\n");\par
+\tab scanf("%d",&choice);\par
+\tab switch(choice)\{\par
+\tab\tab case 1:\par
+\tab\tab\tab printf("\\nEnter the data:\\n"); \par
+\tab\tab\tab scanf("%d",&item); \par
+\tab\tab\tab insert(item);\par
+\tab\tab\tab break;\par
+\tab\tab\par
+\tab\tab case 2:\par
+\tab\tab\tab display();\par
+\tab\tab\tab break; \par
+\tab\tab //case 3:\par
+\tab\tab //\tab exit(1);\par
+\tab\tab //\tab break; \par
+\tab\tab default:\par
+\tab\tab\tab printf("invalid choice\\n");\par
+\tab\tab\tab break; \par
+\tab\tab\}\par
+\tab\}while(choice<3);\par
+\tab return 0;\par
+\}\par
+void insert(int item) \{\par
+NodeType *nnode;\par
+nnode=( NodeType *)malloc(sizeof(NodeType));\par
+if(rear==0) \{   \tab\tab\tab //condotion where there is no data inseated yet\par
+\tab nnode->info=item; //inseating the value in nnode\par
+\tab\tab\tab //initilizing null value at nnode->next\par
+\tab rear=front=nnode;\tab\tab //changing the position of rear and front fron null to nnode\par
+\tab rear->next=front;\par
+\} \par
+else\{\par
+\tab nnode->info=item;\par
+\tab nnode->next=front; //initilizing the nnode-> to null so more data can be inserted later \par
+\tab rear->next=nnode; //replacing the value of rear->next with address of nnode so new node points to previous node\par
+\tab rear=nnode;\tab\tab\tab //changing rear to new node\par
+\tab\} \par
+\}\par
+void display()\par
+ \{\par
+\tab NodeType *temp;  \tab\tab //initilizing temp variable\par
+\par
+\tab temp=front;\tab\par
+\tab front=front->next;\tab\tab // replacing the vall=ue of tem with front\par
+\tab printf("\\n items are:\\t"); \par
+\tab while(temp!=front)\{\tab\tab\tab //loop which display all items of queue until temp reaches to last item i.e null\par
+\tab\tab printf("%d\\t",temp->info);\par
+\tab\tab temp=temp->next; \par
+\tab\}\par
+\}\par
+\par
+3. Write a program to implement Stack as a circular list with comments on each line.\par
+4. Write a program to implement queue as a circular list with comments on each line.\par
+5. Write a program to implement Doubly Linked List with comments on each line.\par
+/* Doubly Linked List implementation */no5 ko\par
+#include<stdio.h>\par
+#include<stdlib.h>\par
+\par
+struct Node  \{ //creating structure for node\par
+\tab int data;\par
+\tab struct Node* next;\par
+\tab struct Node* prev;\par
+\};\par
+\par
+struct Node* head; // global variable - pointer to head node.\par
+\par
+//Creates a new Node and returns pointer to it.\par
+struct Node* GetNewNode(int x) \{ //creating newnode\par
+\tab struct Node* newNode\par
+\tab\tab = (struct Node*)malloc(sizeof(struct Node));\par
+\tab newNode->data = x;\par
+\tab newNode->prev = NULL;\par
+\tab newNode->next = NULL;\par
+\tab return newNode;\par
+\}\par
+\par
+//Inserts a Node at head of doubly linked list\par
+void InsertAtHead(int x) \{\par
+\tab struct Node* newNode = GetNewNode(x);\par
+\tab if(head == NULL) \{\par
+\tab\tab head = newNode;\par
+\tab\tab return;\par
+\tab\}\par
+\tab head->prev = newNode;\par
+\tab newNode->next = head;\par
+\tab head = newNode;\par
+\}\par
+\par
+//Inserts a Node at tail of Doubly linked list\par
+void InsertAtTail(int x) \{\par
+\tab struct Node* temp = head;\par
+\tab struct Node* newNode = GetNewNode(x);\par
+\tab if(head == NULL) \{\par
+\tab\tab head = newNode;\par
+\tab\tab return;\par
+\tab\}\par
+\tab while(temp->next != NULL) temp = temp->next; // Go To last Node\par
+\tab temp->next = newNode;\par
+\tab newNode->prev = temp;\par
+\}\par
+\par
+//Prints all the elements in linked list in forward traversal order\par
+void Print() \{\par
+\tab struct Node* temp = head;\par
+\tab printf("Forward: ");\par
+\tab while(temp != NULL) \{\par
+\tab\tab printf("%d ",temp->data);\par
+\tab\tab temp = temp->next;\par
+\tab\}\par
+\tab printf("\\n");\par
+\}\par
+\par
+int main() \{\par
+\par
+\tab head = NULL; // empty list. set head as NULL.\par
+int choice, item;\par
+\tab do \{\par
+\tab\tab printf("\\n1.insert from head \\n2.inseart from tail \\n3.Display\\n4:Exit\\n");\par
+\tab\tab printf("enter ur choice\\n");\par
+\tab\tab scanf("%d",&choice);\par
+\tab\tab switch(choice)\par
+\tab\tab\{\par
+\tab\tab case 1:\par
+\tab\tab\tab printf("\\nEnter the data:\\n"); scanf("%d",&item); InsertAtHead(item);\par
+\tab\tab\tab break;\par
+\tab\tab case 2:\par
+\tab\tab\tab printf("\\nEnter the data:\\n"); scanf("%d",&item); InsertAtTail(item);\par
+\tab\tab\tab break;\par
+\tab\tab\tab break;\par
+\tab\tab case 3:\par
+\tab\tab\tab print();\par
+\tab\tab\tab break;\par
+\tab\tab //case 4:\par
+\tab\tab\tab //exit(1);\par
+\tab\tab\tab //break;\par
+\tab\tab default:\par
+\tab\tab\tab printf("invalid choice\\n");\par
+\tab\tab\tab break;\par
+\tab\tab\}\par
+\tab\}while(choice<5);\par
+return 0;\par
+\}\par
+6. Write a program to implement Circular Doubly Linked List with comments on each line.\par
+#include <stdio.h>\par
+#include <stdlib.h>\par
+struct node\par
+\{\par
+\tab int val;\par
+\tab struct node *next;\par
+\tab struct node *prev;    \par
+\};\par
+\par
+typedef struct node n;\par
+n* create_node(int);\par
+void add_node();\par
+void insert_at_first();\par
+void insert_at_end();\par
+void insert_at_position();\par
+void delete_node_position();\par
+void sort_list();\par
+void update();\par
+void search();\par
+void display_from_beg();\par
+void display_in_rev();\par
+n *new, *ptr, *prev;\par
+n *first = NULL, *last = NULL;\par
+nt number = 0;\par
+void main()\par
+\{\par
+    int ch;\par
+    printf("\\n linked list\\n");printf("1.insert at beginning \\n 2.insert at end\\n 3.\\n 4.delete node at position\\n5.displaylist from beginning\\n9.display list from end\\n10.exit ");\par
+\tab while (1)\par
+    \{\par
+        printf("\\n enter your choice:");\par
+        scanf("%d", &ch);\par
+        switch (ch)\par
+        \{\par
+        case 1 :\par
+            insert_at_first();\par
+            break;\par
+        case 2 :\par
+            insert_at_end();\par
+            break;\par
+        case 5 :\par
+            delete_node_position();\par
+            break;\par
+        case 6 :\par
+            display_from_beg();\par
+            break;\par
+        case 7 :\par
+            display_in_rev();\par
+            break;\par
+        case 8 :\par
+            exit(0);\par
+\par
+        case 9 :\par
+            add_node();\par
+            break;\par
+        default:\par
+            printf("\\ninvalid choice");                \par
+        \}\par
+    \}\par
+\}\par
+\par
+/*\par
+\par
+ *MEMORY ALLOCATED FOR NODE DYNAMICALLY\par
+\par
+ */\par
+\par
+n* create_node(int info)\par
+\par
+\{\par
+\par
+    number++;\par
+\par
+    new = (n *)malloc(sizeof(n));\par
+\par
+    new->val = info;\par
+\par
+    new->next = NULL;\par
+\par
+    new->prev = NULL;\par
+\par
+    return new;\par
+\par
+\}\par
+\par
+/*\par
+\par
+ *ADDS NEW NODE\par
+\par
+ */\par
+\par
+void add_node()\par
+\par
+\{\par
+\par
+ \par
+\par
+    int info;\par
+\par
+ \par
+\par
+    printf("\\nenter the value you would like to add:");\par
+\par
+    scanf("%d", &info);\par
+\par
+    new = create_node(info);\par
+\par
+ \par
+\par
+    if (first == last && first == NULL)\par
+\par
+    \{\par
+\par
+ \par
+\par
+        first = last = new;\par
+\par
+        first->next = last->next = NULL;\par
+\par
+        first->prev = last->prev = NULL;\par
+\par
+    \}\par
+\par
+    else\par
+\par
+    \{\par
+\par
+        last->next = new;\par
+\par
+        new->prev = last;\par
+\par
+        last = new;\par
+\par
+        last->next = first;\par
+\par
+        first->prev = last;\par
+\par
+    \}\par
+\par
+\}\par
+\par
+/*\par
+\par
+ *INSERTS ELEMENT AT FIRST\par
+\par
+ */\par
+\par
+void insert_at_first()\par
+\par
+\{\par
+\par
+ \par
+\par
+    int info;\par
+\par
+ \par
+\par
+    printf("\\nenter the value to be inserted at first:");\par
+\par
+    scanf("%d",&info);\par
+\par
+    new = create_node(info);\par
+\par
+ \par
+\par
+    if (first == last && first == NULL)\par
+\par
+    \{    \par
+\par
+        printf("\\ninitially it is empty linked list later insertion is done");\par
+\par
+        first = last = new;\par
+\par
+        first->next = last->next = NULL;\par
+\par
+        first->prev = last->prev = NULL;\par
+\par
+    \}\par
+\par
+    else\par
+\par
+    \{\par
+\par
+        new->next = first;\par
+\par
+        first->prev = new;\par
+\par
+        first = new;\par
+\par
+        first->prev = last;\par
+\par
+        last->next = first;\par
+\par
+        printf("\\n the value is inserted at begining");\par
+\par
+    \}\par
+\par
+\}\par
+\par
+/*\par
+\par
+ *INSERTS ELEMNET AT END\par
+\par
+ */\par
+\par
+void insert_at_end()\par
+\par
+\{\par
+\par
+ \par
+\par
+    int info;    \par
+\par
+ \par
+\par
+    printf("\\nenter the value that has to be inserted at last:");\par
+\par
+    scanf("%d", &info);\par
+\par
+    new = create_node(info);\par
+\par
+ \par
+\par
+    if (first == last && first == NULL)\par
+\par
+    \{\par
+\par
+        printf("\\ninitially the list is empty and now new node is inserted but at first");\par
+\par
+        first = last = new;\par
+\par
+        first->next = last->next = NULL;    \par
+\par
+        first->prev = last->prev = NULL;\par
+\par
+    \}\par
+\par
+    else\par
+\par
+    \{\par
+\par
+        last->next = new;\par
+\par
+        new->prev = last;\par
+\par
+        last = new;\par
+\par
+        first->prev = last;\par
+\par
+        last->next = first;\par
+\par
+    \}\par
+\par
+\}\par
+\par
+/*\par
+\par
+ *INSERTS THE ELEMENT AT GIVEN POSITION\par
+\par
+ */\par
+\par
+void insert_at_position()\par
+\par
+\{    \par
+\par
+    int info, pos, len = 0, i;\par
+\par
+    n *prevnode;\par
+\par
+ \par
+\par
+    printf("\\n enter the value that you would like to insert:");\par
+\par
+    scanf("%d", &info);\par
+\par
+    printf("\\n enter the position where you have to enter:");\par
+\par
+    scanf("%d", &pos);\par
+\par
+    n\par
+/*\par
+\par
+ *DELETION IS DONE\par
+\par
+ */\par
+\par
+void delete_node_position()\par
+\par
+\{    \par
+\par
+    int pos, count = 0, i;\par
+\par
+    n *temp, *prevnode;\par
+\par
+ \par
+\par
+    printf("\\n enter the position which u wanted to delete:");\par
+\par
+    scanf("%d", &pos);\par
+\par
+ \par
+\par
+    if (first == last && first == NULL)\par
+\par
+        printf("\\n empty linked list you cant delete");\par
+\par
+ \par
+\par
+    else\par
+\par
+    \{\par
+\par
+        if (number < pos)\par
+\par
+            printf("\\n node cant be deleted at position as it is exceeding the linkedlist length");\par
+\par
+ \par
+\par
+        else\par
+\par
+        \{\par
+\par
+            for (ptr = first,i = 1;i <= number;i++)\par
+\par
+            \{\par
+\par
+                prevnode = ptr;\par
+\par
+                ptr = ptr->next;\par
+\par
+                if (pos == 1)\par
+\par
+                \{    \par
+\par
+                    number--;\par
+\par
+                    last->next = prevnode->next;\par
+\par
+                    ptr->prev = prevnode->prev;\par
+\par
+                    first = ptr;\par
+\par
+                    printf("%d is deleted", prevnode->val);\par
+\par
+                    free(prevnode);\par
+\par
+                    break;        \par
+\par
+                \}\par
+\par
+                else if (i == pos - 1)\par
+\par
+                \{    \par
+\par
+                    number--;\par
+\par
+                    prevnode->next = ptr->next;\par
+\par
+                    ptr->next->prev = prevnode;\par
+\par
+                    printf("%d is deleted", ptr->val);\par
+\par
+                    free(ptr);\par
+\par
+                    break;\par
+\par
+                \}\par
+\par
+            \}\par
+\par
+        \}\par
+\par
+    \}\par
+\par
+\}\par
+\par
+/*\par
+\par
+ *UPDATION IS DONE FRO GIVEN OLD VAL\par
+\par
+ */\par
+\par
+void update()\par
+\par
+\{    \par
+\par
+    int oldval, newval, i, f = 0;\par
+\par
+    printf("\\n enter the value old value:");\par
+\par
+    scanf("%d", &oldval);\par
+\par
+    printf("\\n enter the value new value:");\par
+\par
+ *DISPLAYING IN BEGINNING\par
+\par
+ */\par
+\par
+void display_from_beg()\par
+\par
+\{\par
+\par
+    int i;\par
+\par
+    if (first == last && first == NULL)\par
+\par
+        printf("\\nlist is empty no elemnts to print");\par
+\par
+    else\par
+\par
+    \{    \par
+\par
+        printf("\\n%d number of nodes are there", number);\par
+\par
+        for (ptr = first, i = 0;i < number;i++,ptr = ptr->next)\par
+\par
+            printf("\\n %d", ptr->val);\par
+\par
+    \}\par
+\par
+\}\par
+\par
+/*\par
+\par
+ * DISPLAYING IN REVERSE\par
+\par
+ */\par
+\par
+void display_in_rev()\par
+\par
+\{\par
+\par
+    int i;        \par
+\par
+    if (first == last && first == NULL)\par
+\par
+        printf("\\nlist is empty there are no elments");\par
+\par
+    else\par
+\par
+    \{\par
+\par
+        for (ptr = last, i = 0;i < number;i++,ptr = ptr->prev)\par
+\par
+        \{\par
+            printf("\\n%d", ptr->val);\par
+        \}\par
+    \}\par
+\}\par
+\par
+\par
+\par
+\par
+}
+ 
